@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head><title>Create Course</title></head>
-<body>
-<h1>Create Course</h1>
+@extends('layouts.app')
 
-<form action="/courses" method="POST">
-    @csrf
-    @include('course._form')
-    <button type="submit">Create Course</button>
-</form>
+@section('title', 'Create Course')
 
-<br>
-<a href="/courses">Back to Courses</a>
-</body>
-</html>
+@section('content')
+    <h1>Create Course</h1>
+
+    <form action="{{ route('courses.store') }}" method="POST">
+        @csrf
+
+        @include('course._form')
+
+        <button type="submit" class="btn">Create Course</button>
+        <a href="{{ route('courses.index') }}">Cancel</a>
+    </form>
+@endsection
